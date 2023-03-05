@@ -42,7 +42,121 @@ public class HlavniProgram {
     }
 
     public void chytMys() {
+
+//        OtocSeVpravo();
+//        tom.moveForward(50);
+//
+//
+//        OtocSeVlevo();
+//        tom.moveForward(20);
+//
+//        OtocSeNahoru();
+//        tom.moveForward(50);
+
+//        OtocSeDolu();
+
+//        tom.moveForward(1000);
+
+
+//        proč tohle nefunguje?
+
+        if (tom.getOrientation() == PlayerOrientation.DOWN) {
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.LEFT) {
+            tom.turnLeft();
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.RIGHT) {
+            tom.turnRight();
+            return;
+        }
+        tom.moveForward(1000);
+
+
+
+
+
+
+
+
+
+
         // TODO: Sem vepište svůj program
+    }
+
+    private void OtocSeDolu() {
+        if (tom.getOrientation() == PlayerOrientation.DOWN) {
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.LEFT) {
+            tom.turnLeft();
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.RIGHT) {
+            tom.turnRight();
+            return;
+        }
+            tom.turnLeft();
+            tom.turnLeft();
+    }
+
+    private void OtocSeVlevo() {
+        if (tom.getOrientation() == PlayerOrientation.LEFT) {
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.DOWN) {
+            tom.turnLeft();
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.UP) {
+            tom.turnLeft();
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.RIGHT) {
+            tom.turnLeft();
+            tom.turnLeft();
+            return;
+        }
+    }
+
+    private void OtocSeNahoru() {
+        if (tom.getOrientation() == PlayerOrientation.UP) {
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.LEFT) {
+            tom.turnRight();
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.RIGHT) {
+            tom.turnLeft();
+            return;
+        }
+
+        if (tom.getOrientation() == PlayerOrientation.DOWN) {
+            tom.turnLeft();
+            tom.turnLeft();
+            return;
+        }
+    }
+
+    private void OtocSeVpravo() {
+        if (tom.getOrientation() == PlayerOrientation.RIGHT) {
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.DOWN) {
+            tom.turnLeft();
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.UP) {
+            tom.turnRight();
+            return;
+        }
+        if (tom.getOrientation() == PlayerOrientation.LEFT) {
+            tom.turnRight();
+            tom.turnRight();
+            return;
+        }
     }
 
     public void vytvorVeci(int pocetStromu) {

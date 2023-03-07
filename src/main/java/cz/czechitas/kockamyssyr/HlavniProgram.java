@@ -42,6 +42,11 @@ public class HlavniProgram {
     }
 
     public void chytMys() {
+        while (jerry.isAlive()){
+            jdiZaJerrymAVyhniSeStromu();
+        }
+
+
 
 //        OtocSeVpravo();
 //        tom.moveForward(50);
@@ -58,33 +63,95 @@ public class HlavniProgram {
 //        tom.moveForward(1000);
 
 
-//        proč tohle nefunguje?
-
-        if (tom.getOrientation() == PlayerOrientation.DOWN) {
-            return;
-        }
-        if (tom.getOrientation() == PlayerOrientation.LEFT) {
-            tom.turnLeft();
-            return;
-        }
-        if (tom.getOrientation() == PlayerOrientation.RIGHT) {
-            tom.turnRight();
-            return;
-        }
-        tom.moveForward(1000);
-
-
-
-
-
-
-
-
 
 
         // TODO: Sem vepište svůj program
     }
 
+
+    private void jdiZaJerrymAVyhniSeStromu(){
+        int horizontalniRozdil = (jerry.getX() - tom.getX());
+        if (horizontalniRozdil < 0) {
+            OtocSeVlevo();
+            while (jerry.getX() < tom.getX()){
+                vyhniSeStromu();
+                tom.moveForward();}
+        } else if (horizontalniRozdil > 0) {
+            OtocSeVpravo();
+            while (jerry.getX()> tom.getX());{
+                vyhniSeStromu();
+                tom.moveForward();}
+        }
+        int vertikalniRozdil = (jerry.getY() - tom.getY());
+        if (vertikalniRozdil < 0) {
+            OtocSeNahoru();
+            while (jerry.getY()< tom.getY()){
+                vyhniSeStromu();
+                tom.moveForward();}
+        } else if (vertikalniRozdil > 0) {
+            OtocSeDolu();
+            while (jerry.getY() > tom.getY()){
+                vyhniSeStromu();
+                tom.moveForward();
+            }
+        }
+
+    }
+    private void vyhniSeStromu(){
+        if (tom.isPossibleToMoveForward()) {
+           return;
+        }
+        tom.turnRight();
+        tom.moveForward();
+        tom.turnLeft();
+    }
+
+    private void jdiZaJerrym(){
+        int horizontalniRozdil = (jerry.getX() - tom.getX());
+        if (horizontalniRozdil < 0) {
+            OtocSeVlevo();
+            while (jerry.getX() < tom.getX()){
+                tom.moveForward();}
+        } else if (horizontalniRozdil > 0) {
+            OtocSeVpravo();
+            while (jerry.getX()> tom.getX());{
+            tom.moveForward();}
+        }
+        int vertikalniRozdil = (jerry.getY() - tom.getY());
+        if (vertikalniRozdil < 0) {
+            OtocSeNahoru();
+            while (jerry.getY()< tom.getY()){
+                tom.moveForward();}
+            } else if (vertikalniRozdil > 0) {
+                OtocSeDolu();
+                while (jerry.getY() > tom.getY()){
+                    tom.moveForward();
+                }
+        }
+
+    }
+
+    private void jdiNaSouradnice(int x, int y) {
+        int horizontalniRozdil = (x - tom.getX());
+        if (horizontalniRozdil < 0) {
+            OtocSeVlevo();
+            tom.moveForward(Math.abs(horizontalniRozdil));
+        }
+        else if (horizontalniRozdil > 0) {
+            OtocSeVpravo();
+            tom.moveForward(Math.abs(horizontalniRozdil));
+        }
+
+        int vertikalniRozdil = (y - tom.getY());
+        if (vertikalniRozdil < 0) {
+            OtocSeNahoru();
+            tom.moveForward(Math.abs(vertikalniRozdil));
+        }
+        else if (vertikalniRozdil > 0) {
+            OtocSeDolu();
+            tom.moveForward(Math.abs(vertikalniRozdil));
+        }
+    }
     private void OtocSeDolu() {
         if (tom.getOrientation() == PlayerOrientation.DOWN) {
             return;
@@ -158,6 +225,7 @@ public class HlavniProgram {
             return;
         }
     }
+
 
     public void vytvorVeci(int pocetStromu) {
         for (int i = 0; i < pocetStromu; i++) {
